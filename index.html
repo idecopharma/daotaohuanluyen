@@ -2,6 +2,12 @@
 <html lang="vi">
 <head>
   <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, viewport-fit=cover">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="theme-color" content="#4CAF50">
+  <meta name="format-detection" content="telephone=no">
   <title>PODCAST & VIDEO - Đào Tạo Hội Nhập & Kỹ Năng</title>
   <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-app-compat.js"></script>
   <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-database-compat.js"></script>
@@ -2221,6 +2227,112 @@
     color: var(--text-light);
     font-style: italic;
     font-size: 0.88rem;
+  }
+
+  /* ============================================================
+     TỐI ƯU CHO ĐIỆN THOẠI / MÀN HÌNH CẢM ỨNG (bổ sung)
+     ============================================================ */
+
+  /* Tránh cuộn ngang ngoài ý muốn */
+  html, body { overflow-x: hidden; max-width: 100%; }
+  * { -webkit-tap-highlight-color: rgba(33, 150, 243, 0.15); }
+
+  /* Vùng chạm tối thiểu 44px cho các nút chính, theo chuẩn khuyến nghị mobile */
+  button, .sort-btn, .slide-toggle-btn, .main-tab,
+  .modal-close-x, .search-clear-btn, .ts-clear-btn, .delete-listener-btn {
+    min-height: 40px;
+    touch-action: manipulation;
+  }
+  .training-item, .category-quicknav-card, .audio-item, .listener-item,
+  a, select { touch-action: manipulation; }
+
+  /* Nút tròn nổi (admin, live) tránh bị che bởi thanh điều hướng iPhone (safe area) */
+  .admin-fab { bottom: calc(24px + env(safe-area-inset-bottom)); }
+  .lbadm-fab { bottom: calc(25px + env(safe-area-inset-bottom)); }
+
+  /* Bỏ hiệu ứng hover "dính" trên cảm ứng, thay bằng hiệu ứng bấm (active) rõ ràng */
+  @media (hover: none) and (pointer: coarse) {
+    .audio-item:hover,
+    .training-item:hover,
+    .category-quicknav-card:hover,
+    .admin-fab:hover,
+    .gate-btn-primary:hover,
+    button:hover {
+      transform: none !important;
+      box-shadow: revert;
+    }
+    .audio-item:active,
+    .training-item:active,
+    .category-quicknav-card:active,
+    button:active {
+      transform: scale(0.97);
+      opacity: 0.92;
+    }
+  }
+
+  /* Chặn Safari iOS tự phóng to trang khi bấm vào ô nhập liệu (yêu cầu font-size >= 16px) */
+  @media (max-width: 768px) {
+    input[type="text"], input[type="password"], select, textarea {
+      font-size: 16px !important;
+    }
+  }
+
+  /* --- Điều chỉnh chi tiết cho màn hình điện thoại (≤768px) --- */
+  @media (max-width: 768px) {
+    body { padding: 10px; }
+    .container { padding: 16px 12px; border-radius: 12px; }
+
+    h1 { font-size: 1.35rem; padding-bottom: 12px; line-height: 1.35; }
+    h1::after { width: 80px; height: 3px; }
+
+    /* Thanh tab chính: gọn hơn, dễ bấm hơn */
+    .main-tabs { margin: -6px -6px 16px; padding: 5px; top: 6px; gap: 4px; }
+    .main-tab { padding: 10px 6px; font-size: 0.8rem; gap: 6px; }
+    .main-tab i { font-size: 0.95rem; }
+
+    .list-hero { padding: 20px 16px; gap: 14px; }
+    .list-hero p { font-size: 0.86rem; }
+
+    /* Danh mục nhanh: 2 cột thay vì nhiều cột co giãn khó bấm */
+    .category-quicknav { grid-template-columns: 1fr 1fr; gap: 8px; }
+    .category-quicknav-card { padding: 12px 12px; }
+
+    /* Danh sách bài học: 1 cột full-width thay vì lưới tự co */
+    .training-items-grid { grid-template-columns: 1fr; }
+
+    /* Thẻ podcast/video: tên bài rõ ràng hơn khi xếp dọc trên mobile */
+    .audio-header { padding: 14px; }
+    .audio-name { font-size: 1.05rem; justify-content: center; text-align: center; }
+    .audio-name-input { font-size: 1.05rem; }
+    .audio-content { padding: 14px; }
+    .audio-actions { padding: 12px; }
+
+    /* Modal quản trị & popup: vừa màn hình nhỏ, cuộn được nếu nội dung dài */
+    .admin-pw-modal .modal-card { padding: 22px 16px; max-height: 88vh; overflow-y: auto; }
+    .gate-card { padding: 30px 20px; max-height: 90vh; overflow-y: auto; }
+    .modal-content { max-height: 88vh; overflow-y: auto; }
+
+    /* Form quản lý danh sách: nút icon dễ bấm hơn */
+    .list-mgmt-icon-btn { width: 34px !important; height: 34px !important; font-size: 14px; }
+    .list-mgmt-stage-row { flex-wrap: wrap; }
+
+    /* Nút tròn nổi nhỏ gọn hơn trên điện thoại */
+    .admin-fab { width: 46px; height: 46px; font-size: 19px; bottom: calc(16px + env(safe-area-inset-bottom)); right: 16px; }
+    .lbadm-fab { padding: 10px 16px; font-size: 0.85rem; bottom: calc(15px + env(safe-area-inset-bottom)); left: 15px; }
+
+    .lbadm-body { padding: 14px 16px; }
+    .lbadm-actions { padding: 12px 16px; }
+    .lbadm-field input { padding: 11px 12px; }
+  }
+
+  /* --- Màn hình rất nhỏ (điện thoại phổ thông, ≤400px) --- */
+  @media (max-width: 400px) {
+    h1 { font-size: 1.15rem; }
+    .container { padding: 12px 10px; }
+    .category-quicknav { grid-template-columns: 1fr; }
+    .audio-image { max-height: 160px; }
+    .stage-num { font-size: 1.7rem; }
+    .list-hero img { height: 70px; width: 70px; }
   }
   </style>
 </head>

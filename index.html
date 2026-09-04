@@ -2,12 +2,6 @@
 <html lang="vi">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, viewport-fit=cover">
-  <meta name="mobile-web-app-capable" content="yes">
-  <meta name="apple-mobile-web-app-capable" content="yes">
-  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
-  <meta name="theme-color" content="#4CAF50">
-  <meta name="format-detection" content="telephone=no">
   <title>PODCAST & VIDEO - Đào Tạo Hội Nhập & Kỹ Năng</title>
   <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-app-compat.js"></script>
   <script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-database-compat.js"></script>
@@ -2227,112 +2221,6 @@
     color: var(--text-light);
     font-style: italic;
     font-size: 0.88rem;
-  }
-
-  /* ============================================================
-     TỐI ƯU CHO ĐIỆN THOẠI / MÀN HÌNH CẢM ỨNG (bổ sung)
-     ============================================================ */
-
-  /* Tránh cuộn ngang ngoài ý muốn */
-  html, body { overflow-x: hidden; max-width: 100%; }
-  * { -webkit-tap-highlight-color: rgba(33, 150, 243, 0.15); }
-
-  /* Vùng chạm tối thiểu 44px cho các nút chính, theo chuẩn khuyến nghị mobile */
-  button, .sort-btn, .slide-toggle-btn, .main-tab,
-  .modal-close-x, .search-clear-btn, .ts-clear-btn, .delete-listener-btn {
-    min-height: 40px;
-    touch-action: manipulation;
-  }
-  .training-item, .category-quicknav-card, .audio-item, .listener-item,
-  a, select { touch-action: manipulation; }
-
-  /* Nút tròn nổi (admin, live) tránh bị che bởi thanh điều hướng iPhone (safe area) */
-  .admin-fab { bottom: calc(24px + env(safe-area-inset-bottom)); }
-  .lbadm-fab { bottom: calc(25px + env(safe-area-inset-bottom)); }
-
-  /* Bỏ hiệu ứng hover "dính" trên cảm ứng, thay bằng hiệu ứng bấm (active) rõ ràng */
-  @media (hover: none) and (pointer: coarse) {
-    .audio-item:hover,
-    .training-item:hover,
-    .category-quicknav-card:hover,
-    .admin-fab:hover,
-    .gate-btn-primary:hover,
-    button:hover {
-      transform: none !important;
-      box-shadow: revert;
-    }
-    .audio-item:active,
-    .training-item:active,
-    .category-quicknav-card:active,
-    button:active {
-      transform: scale(0.97);
-      opacity: 0.92;
-    }
-  }
-
-  /* Chặn Safari iOS tự phóng to trang khi bấm vào ô nhập liệu (yêu cầu font-size >= 16px) */
-  @media (max-width: 768px) {
-    input[type="text"], input[type="password"], select, textarea {
-      font-size: 16px !important;
-    }
-  }
-
-  /* --- Điều chỉnh chi tiết cho màn hình điện thoại (≤768px) --- */
-  @media (max-width: 768px) {
-    body { padding: 10px; }
-    .container { padding: 16px 12px; border-radius: 12px; }
-
-    h1 { font-size: 1.35rem; padding-bottom: 12px; line-height: 1.35; }
-    h1::after { width: 80px; height: 3px; }
-
-    /* Thanh tab chính: gọn hơn, dễ bấm hơn */
-    .main-tabs { margin: -6px -6px 16px; padding: 5px; top: 6px; gap: 4px; }
-    .main-tab { padding: 10px 6px; font-size: 0.8rem; gap: 6px; }
-    .main-tab i { font-size: 0.95rem; }
-
-    .list-hero { padding: 20px 16px; gap: 14px; }
-    .list-hero p { font-size: 0.86rem; }
-
-    /* Danh mục nhanh: 2 cột thay vì nhiều cột co giãn khó bấm */
-    .category-quicknav { grid-template-columns: 1fr 1fr; gap: 8px; }
-    .category-quicknav-card { padding: 12px 12px; }
-
-    /* Danh sách bài học: 1 cột full-width thay vì lưới tự co */
-    .training-items-grid { grid-template-columns: 1fr; }
-
-    /* Thẻ podcast/video: tên bài rõ ràng hơn khi xếp dọc trên mobile */
-    .audio-header { padding: 14px; }
-    .audio-name { font-size: 1.05rem; justify-content: center; text-align: center; }
-    .audio-name-input { font-size: 1.05rem; }
-    .audio-content { padding: 14px; }
-    .audio-actions { padding: 12px; }
-
-    /* Modal quản trị & popup: vừa màn hình nhỏ, cuộn được nếu nội dung dài */
-    .admin-pw-modal .modal-card { padding: 22px 16px; max-height: 88vh; overflow-y: auto; }
-    .gate-card { padding: 30px 20px; max-height: 90vh; overflow-y: auto; }
-    .modal-content { max-height: 88vh; overflow-y: auto; }
-
-    /* Form quản lý danh sách: nút icon dễ bấm hơn */
-    .list-mgmt-icon-btn { width: 34px !important; height: 34px !important; font-size: 14px; }
-    .list-mgmt-stage-row { flex-wrap: wrap; }
-
-    /* Nút tròn nổi nhỏ gọn hơn trên điện thoại */
-    .admin-fab { width: 46px; height: 46px; font-size: 19px; bottom: calc(16px + env(safe-area-inset-bottom)); right: 16px; }
-    .lbadm-fab { padding: 10px 16px; font-size: 0.85rem; bottom: calc(15px + env(safe-area-inset-bottom)); left: 15px; }
-
-    .lbadm-body { padding: 14px 16px; }
-    .lbadm-actions { padding: 12px 16px; }
-    .lbadm-field input { padding: 11px 12px; }
-  }
-
-  /* --- Màn hình rất nhỏ (điện thoại phổ thông, ≤400px) --- */
-  @media (max-width: 400px) {
-    h1 { font-size: 1.15rem; }
-    .container { padding: 12px 10px; }
-    .category-quicknav { grid-template-columns: 1fr; }
-    .audio-image { max-height: 160px; }
-    .stage-num { font-size: 1.7rem; }
-    .list-hero img { height: 70px; width: 70px; }
   }
   </style>
 </head>
@@ -5271,50 +5159,92 @@
       });
     }, 24 * 60 * 60 * 1000);
   </script>
-  <!-- ═══════════════ MODULE THÔNG BÁO LIVE (ADMIN) ═══════════════ -->
+  <!-- ═══════════════ MODULE THÔNG BÁO LIVE (ADMIN) - CHUYÊN ĐỀ 1→10 ═══════════════ -->
   <style>
-    .lbadm-fab{position:fixed;bottom:25px;left:25px;z-index:9990;background:linear-gradient(135deg,#e53e3e,#c53030);color:#fff;border:none;border-radius:50px;padding:14px 22px;font-weight:700;font-size:1rem;cursor:pointer;box-shadow:0 6px 20px rgba(229,62,62,.45);display:inline-flex;align-items:center;gap:8px;animation:lbadmPulse 2s infinite}
+    .lbadm-fab{position:fixed;bottom:25px;left:25px;z-index:9990;background:linear-gradient(135deg,#e53e3e,#c53030);color:#fff;border:none;border-radius:50px;padding:14px 22px;font-weight:800;font-size:1rem;cursor:pointer;box-shadow:0 6px 20px rgba(229,62,62,.45);display:inline-flex;align-items:center;gap:8px;animation:lbadmPulse 2s infinite}
     .lbadm-fab .lbadm-dot{width:10px;height:10px;border-radius:50%;background:#fff;animation:lbadmBlink 1s infinite}
     @keyframes lbadmPulse{0%,100%{box-shadow:0 6px 20px rgba(229,62,62,.45)}50%{box-shadow:0 6px 30px rgba(229,62,62,.8)}}
     @keyframes lbadmBlink{0%,100%{opacity:1}50%{opacity:.3}}
-    .lbadm-overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,.55);z-index:9991;justify-content:center;align-items:center;padding:15px}
+    .lbadm-overlay{display:none;position:fixed;inset:0;background:rgba(15,23,42,.72);z-index:9991;justify-content:center;align-items:center;padding:10px;backdrop-filter:blur(3px)}
     .lbadm-overlay.show{display:flex}
-    .lbadm-panel{background:#fff;border-radius:16px;width:100%;max-width:680px;max-height:92vh;display:flex;flex-direction:column;overflow:hidden;box-shadow:0 20px 60px rgba(0,0,0,.3)}
-    .lbadm-head{background:linear-gradient(135deg,#c53030,#e53e3e);color:#fff;padding:16px 22px;display:flex;justify-content:space-between;align-items:center}
-    .lbadm-head h3{margin:0;font-size:1.15rem;display:flex;align-items:center;gap:10px}
-    .lbadm-close{background:rgba(255,255,255,.2);border:none;color:#fff;width:34px;height:34px;border-radius:50%;cursor:pointer;font-size:1.1rem}
-    .lbadm-body{padding:18px 22px;overflow-y:auto;flex:1}
-    .lbadm-field{margin-bottom:14px}
-    .lbadm-field label{font-weight:600;font-size:.9rem;display:block;margin-bottom:5px;color:#2d3748}
-    .lbadm-field input{width:100%;padding:10px 14px;border:1px solid #e2e8f0;border-radius:8px;font-size:.95rem;box-sizing:border-box;margin-bottom:0}
-    .lbadm-status{padding:10px 14px;border-radius:8px;font-size:.88rem;font-weight:600;margin-bottom:14px}
-    .lbadm-status.on{background:#fff5f5;color:#c53030;border:1px solid #feb2b2}
-    .lbadm-status.off{background:#f0fff4;color:#2f855a;border:1px solid #c6f6d5}
-    .lbadm-list{border:1px solid #e2e8f0;border-radius:10px;max-height:300px;overflow-y:auto;background:#f8fafc}
-    .lbadm-item{display:flex;align-items:center;gap:10px;padding:9px 12px;border-bottom:1px solid #edf2f7;cursor:pointer;font-size:.9rem}
-    .lbadm-item:hover{background:#ebf8ff}
-    .lbadm-item.sel{background:#e6fffa;border-left:4px solid #38b2ac}
+    .lbadm-panel{background:#fff;border-radius:18px;width:min(97vw,1600px);height:95vh;max-width:none;max-height:none;display:flex;flex-direction:column;overflow:hidden;box-shadow:0 25px 80px rgba(0,0,0,.4);border:1px solid rgba(255,255,255,.4)}
+    .lbadm-head{background:linear-gradient(135deg,#9b1c1c,#e53e3e);color:#fff;padding:14px 20px;display:flex;justify-content:space-between;align-items:center;gap:15px;flex-shrink:0}
+    .lbadm-head h3{margin:0;font-size:1.18rem;display:flex;align-items:center;gap:10px;line-height:1.3}
+    .lbadm-head small{display:block;font-size:.76rem;font-weight:500;opacity:.9;margin-top:2px}
+    .lbadm-close{background:rgba(255,255,255,.18);border:1px solid rgba(255,255,255,.35);color:#fff;width:38px;height:38px;border-radius:50%;cursor:pointer;font-size:1.12rem;display:flex;align-items:center;justify-content:center;flex-shrink:0;padding:0;margin:0}
+    .lbadm-body{padding:14px 16px 10px;overflow:hidden;flex:1;display:flex;flex-direction:column;min-height:0;background:#f8fafc}
+    .lbadm-status{padding:9px 13px;border-radius:9px;font-size:.86rem;font-weight:700;margin-bottom:10px;flex-shrink:0}
+    .lbadm-status.on{background:#fff1f2;color:#be123c;border:1px solid #fecdd3}
+    .lbadm-status.off{background:#ecfdf5;color:#047857;border:1px solid #a7f3d0}
+    .lbadm-topgrid{display:grid;grid-template-columns:1.05fr 1fr 1.05fr;gap:10px;margin-bottom:10px;flex-shrink:0}
+    .lbadm-field{margin:0;min-width:0}
+    .lbadm-field label{font-weight:700;font-size:.8rem;display:block;margin-bottom:4px;color:#334155}
+    .lbadm-field input{width:100%;padding:9px 11px;border:1px solid #cbd5e1;border-radius:8px;font-size:.88rem;box-sizing:border-box;margin:0;background:#fff}
+    .lbadm-workspace{display:grid;grid-template-columns:245px minmax(420px,1fr) 330px;gap:12px;flex:1;min-height:0;overflow:hidden}
+    .lbadm-pane{background:#fff;border:1px solid #e2e8f0;border-radius:12px;min-height:0;overflow:hidden;display:flex;flex-direction:column;box-shadow:0 2px 8px rgba(15,23,42,.04)}
+    .lbadm-panehead{padding:10px 12px;border-bottom:1px solid #e2e8f0;background:#f8fafc;flex-shrink:0}
+    .lbadm-panehead strong{display:block;font-size:.88rem;color:#0f172a}
+    .lbadm-panehead small{display:block;color:#64748b;font-size:.73rem;margin-top:2px;line-height:1.35}
+    .lbadm-topics{padding:8px;overflow-y:auto;display:grid;grid-template-columns:1fr;gap:6px}
+    .lbadm-topic{margin:0;width:100%;border:1px solid #e2e8f0;background:#fff;color:#334155;border-radius:9px;padding:8px 9px;display:grid;grid-template-columns:34px 1fr auto;align-items:center;gap:8px;text-align:left;box-shadow:none;font-size:.78rem;line-height:1.25;cursor:pointer}
+    .lbadm-topic:hover{background:#f8fafc;transform:none;box-shadow:none;border-color:#94a3b8}
+    .lbadm-topic.active{background:#eff6ff;border-color:#3b82f6;box-shadow:0 0 0 2px rgba(59,130,246,.1)}
+    .lbadm-topicnum{width:32px;height:32px;border-radius:8px;display:flex;align-items:center;justify-content:center;background:#334155;color:#fff;font-weight:900;font-size:.78rem}
+    .lbadm-topic.active .lbadm-topicnum{background:#2563eb}
+    .lbadm-topicname{font-weight:700;color:#1e293b;min-width:0}
+    .lbadm-topiccount{background:#f1f5f9;color:#475569;padding:2px 7px;border-radius:999px;font-size:.7rem;font-weight:800;white-space:nowrap}
+    .lbadm-librarytools{display:flex;align-items:center;gap:6px;flex-wrap:wrap;padding:8px 10px;border-bottom:1px solid #e2e8f0;background:#fff;flex-shrink:0}
+    .lbadm-filterbtn,.lbadm-mini{margin:0;border:1px solid #cbd5e1;background:#fff;color:#334155;border-radius:7px;padding:6px 9px;font-size:.74rem;font-weight:700;box-shadow:none;cursor:pointer}
+    .lbadm-filterbtn:hover,.lbadm-mini:hover{transform:none;box-shadow:none;background:#f8fafc}
+    .lbadm-filterbtn.active{background:#334155;color:#fff;border-color:#334155}
+    .lbadm-mini.selectall{margin-left:auto;background:#ecfdf5;color:#047857;border-color:#a7f3d0}
+    .lbadm-list{overflow-y:auto;background:#fff;flex:1;min-height:0}
+    .lbadm-item{display:grid;grid-template-columns:24px 34px 82px minmax(0,1fr) 27px;align-items:center;gap:8px;padding:8px 10px;border-bottom:1px solid #edf2f7;cursor:pointer;font-size:.82rem;min-height:42px}
+    .lbadm-item:hover{background:#f8fafc}
+    .lbadm-item.sel{background:#ecfeff;border-left:4px solid #0891b2;padding-left:6px}
     .lbadm-item input{width:auto;margin:0}
-    .lbadm-num{background:#4a5568;color:#fff;border-radius:6px;min-width:26px;text-align:center;font-size:.75rem;font-weight:700;padding:2px 4px;flex-shrink:0}
-    .lbadm-type{font-size:.7rem;font-weight:700;padding:2px 7px;border-radius:10px;flex-shrink:0}
-    .lbadm-type.audio{background:#ebf4ff;color:#3182ce}
-    .lbadm-type.video{background:#fff5f5;color:#e53e3e}
-    .lbadm-order{background:#38b2ac;color:#fff;border-radius:50%;width:22px;height:22px;display:inline-flex;align-items:center;justify-content:center;font-size:.72rem;font-weight:700;flex-shrink:0}
-    .lbadm-actions{padding:14px 22px;border-top:1px solid #e2e8f0;display:flex;gap:10px;flex-wrap:wrap;background:#fff}
-    .lbadm-btn{border:none;border-radius:8px;padding:11px 18px;font-weight:700;cursor:pointer;font-size:.92rem;display:inline-flex;align-items:center;gap:7px}
-    .lbadm-btn.go{background:linear-gradient(135deg,#e53e3e,#c53030);color:#fff;box-shadow:0 4px 12px rgba(229,62,62,.4)}
-    .lbadm-btn.reset{background:#edf2f7;color:#2d3748}
-    .lbadm-btn.stop{background:#2d3748;color:#fff}
-    .lbadm-count{margin-left:auto;font-size:.85rem;font-weight:600;color:#4a5568;align-self:center}
-    @media(max-width:600px){.lbadm-fab{bottom:15px;left:15px;padding:11px 16px;font-size:.88rem}}
+    .lbadm-num{background:#475569;color:#fff;border-radius:6px;min-width:28px;text-align:center;font-size:.68rem;font-weight:800;padding:3px 4px;flex-shrink:0}
+    .lbadm-type{font-size:.66rem;font-weight:800;padding:3px 6px;border-radius:10px;white-space:nowrap;text-align:center}
+    .lbadm-type.audio{background:#eff6ff;color:#1d4ed8}.lbadm-type.video{background:#fff1f2;color:#be123c}
+    .lbadm-itemname{min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;color:#1e293b;font-weight:600}
+    .lbadm-order{background:#0f766e;color:#fff;border-radius:50%;width:23px;height:23px;display:inline-flex;align-items:center;justify-content:center;font-size:.68rem;font-weight:800}
+    .lbadm-empty{padding:35px 18px;text-align:center;color:#64748b;font-size:.86rem}
+    .lbadm-queue{overflow-y:auto;flex:1;min-height:0;padding:7px;background:#fff}
+    .lbadm-qitem{display:grid;grid-template-columns:28px 1fr 26px;gap:8px;align-items:center;border:1px solid #e2e8f0;border-radius:8px;padding:7px 8px;margin-bottom:6px;background:#f8fafc}
+    .lbadm-qnum{width:26px;height:26px;border-radius:50%;background:#0f766e;color:#fff;display:flex;align-items:center;justify-content:center;font-size:.7rem;font-weight:900}
+    .lbadm-qtext{min-width:0}.lbadm-qtext strong{display:block;font-size:.76rem;color:#1e293b;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}.lbadm-qtext small{display:block;font-size:.66rem;color:#64748b;margin-top:2px}
+    .lbadm-qremove{margin:0;border:none;background:#fee2e2;color:#b91c1c;width:24px;height:24px;border-radius:6px;padding:0;display:flex;align-items:center;justify-content:center;box-shadow:none;cursor:pointer}
+    .lbadm-qremove:hover{transform:none;box-shadow:none;background:#fecaca}
+    .lbadm-preview{border-top:1px solid #e2e8f0;padding:9px 10px;background:#fffbeb;flex-shrink:0}
+    .lbadm-previewtitle{font-size:.72rem;font-weight:900;color:#92400e;margin-bottom:5px}.lbadm-previewcard{border:1px solid #fde68a;border-radius:8px;background:#fff;padding:8px 9px;font-size:.72rem;color:#475569;line-height:1.4}.lbadm-previewcard b{color:#991b1b}
+    .lbadm-actions{padding:10px 16px;border-top:1px solid #e2e8f0;display:flex;gap:8px;flex-wrap:wrap;background:#fff;align-items:center;flex-shrink:0}
+    .lbadm-btn{border:none;border-radius:8px;padding:9px 15px;font-weight:800;cursor:pointer;font-size:.84rem;display:inline-flex;align-items:center;gap:7px;margin:0}
+    .lbadm-btn.go{background:linear-gradient(135deg,#e53e3e,#b91c1c);color:#fff;box-shadow:0 4px 12px rgba(229,62,62,.35)}
+    .lbadm-btn.reset{background:#e2e8f0;color:#334155}.lbadm-btn.stop{background:#1e293b;color:#fff}
+    .lbadm-count{margin-left:auto;font-size:.78rem;font-weight:800;color:#475569;align-self:center;background:#f1f5f9;border-radius:999px;padding:6px 10px}
+    @media(max-width:1050px){.lbadm-workspace{grid-template-columns:200px minmax(350px,1fr) 280px}.lbadm-panel{width:98vw;height:96vh}}
+    @media(max-width:820px){.lbadm-topgrid{grid-template-columns:1fr}.lbadm-workspace{grid-template-columns:1fr;overflow-y:auto}.lbadm-pane{min-height:230px}.lbadm-topics{grid-template-columns:repeat(2,minmax(0,1fr));max-height:260px}.lbadm-panel{height:97vh}.lbadm-body{overflow-y:auto}.lbadm-list{max-height:42vh}.lbadm-queue{max-height:32vh}}
+    @media(max-width:600px){.lbadm-fab{bottom:15px;left:15px;padding:11px 16px;font-size:.88rem}.lbadm-overlay{padding:4px}.lbadm-panel{width:99vw;height:98vh;border-radius:12px}.lbadm-head{padding:11px 12px}.lbadm-head h3{font-size:.98rem}.lbadm-head small{display:none}.lbadm-body{padding:9px}.lbadm-topics{grid-template-columns:1fr}.lbadm-actions{padding:8px}.lbadm-btn{flex:1;justify-content:center;padding:9px 8px}.lbadm-count{width:100%;margin-left:0;text-align:center}.lbadm-item{grid-template-columns:22px 30px 72px minmax(0,1fr) 24px;gap:5px;padding:7px 6px;font-size:.75rem}}
   </style>
   <script>
   (function(){
     'use strict';
     const LB_NODE = 'liveTrainingBroadcast';
-    let lbContents = {}, lbOrder = [], lbSelected = []; // lbSelected = mảng key theo thứ tự bấm chọn
+    const LB_TOPICS = [
+      {n:1,id:'s1',name:'Hội nhập, tổ chức & văn hóa IDECO',keywords:['hội nhập','nhân viên mới','văn hóa','văn hoá','công sở','quy định công việc','toàn công ty']},
+      {n:2,id:'s2',name:'Công việc, quy trình & phối hợp nội bộ',keywords:['quy trình công ty','phối hợp','kế toán','kho','giao nhận','điều phối','phát sinh','giao sai','giao trễ']},
+      {n:3,id:'s3',name:'Quản lý & chăm sóc khách hàng',keywords:['quản lý khách hàng','chăm sóc khách hàng','chăm sóc kh','khách hàng chuỗi','pharmacity','giao dịch hợp tác']},
+      {n:4,id:'s4',name:'Đơn hàng, kho & giao nhận',keywords:['đơn hàng','lên đơn','khai báo đơn','xử lý đơn','giao nhận','đơn đặt hàng']},
+      {n:5,id:'s5',name:'Báo cáo giao dịch & báo cáo định kỳ',keywords:['báo cáo giao dịch','báo cáo cuối tháng','báo cáo tháng','khai báo hoạt động giao dịch','lập báo cáo']},
+      {n:6,id:'s6',name:'Lập kế hoạch, KPI & quản trị công việc',keywords:['checklist','kế hoạch tuần','lập kế hoạch','kpi','chủ động công việc','quản trị công việc']},
+      {n:7,id:'s7',name:'Kỹ năng bán hàng & chốt sales',keywords:['telesales','thuyết phục','chốt sales','chốt sale','bán hàng','báo giá','xử lý tình huống','lời khuyên kinh doanh','giao tiếp khách hàng']},
+      {n:8,id:'s8',name:'Kiến thức dược, sản phẩm & chuẩn GDP',keywords:['kinh doanh thuốc','sản phẩm thuốc','dược','gdp','thẩm định','thanh tra','chính sách bán thuốc']},
+      {n:9,id:'s9',name:'Công cụ AI, tư duy & phát triển năng lực',keywords:['ideco ai','trợ lý bgđ','tư duy quản lý','quản lý nâng cao','động lực','phát triển bản thân','giữ lửa','hiểu chuyện']},
+      {n:10,id:'s10',name:'Chuyên đề bổ sung / nội dung khác',keywords:[]}
+    ];
+    let lbContents = {}, lbOrder = [], lbSelected = [], lbTraining = null;
+    let lbTopic = 1, lbType = 'all';
 
-    /* ---- UI ---- */
     const fab = document.createElement('button');
     fab.className = 'lbadm-fab';
     fab.innerHTML = '<span class="lbadm-dot"></span> THÔNG BÁO LIVE';
@@ -5326,30 +5256,55 @@
     ov.innerHTML = `
       <div class="lbadm-panel">
         <div class="lbadm-head">
-          <h3><i class="fas fa-broadcast-tower"></i> Thông báo LIVE — Chọn nội dung phát</h3>
+          <div>
+            <h3><i class="fas fa-broadcast-tower"></i> THÔNG BÁO LIVE — CHỌN CHUYÊN ĐỀ & NỘI DUNG</h3>
+            <small>Chọn Chuyên đề 1–10 → chọn Podcast/Video cần nghe/xem → phát thông báo Live.</small>
+          </div>
           <button class="lbadm-close" title="Đóng">✕</button>
         </div>
         <div class="lbadm-body">
           <div class="lbadm-status off" data-lb="status">Chưa có thông báo Live nào đang phát.</div>
-          <div class="lbadm-field">
-            <label>📌 Tên thông báo / Tên danh sách</label>
-            <input type="text" data-lb="title" placeholder="VD: Đào tạo hội nhập tuần này — bắt buộc xem">
+          <div class="lbadm-topgrid">
+            <div class="lbadm-field">
+              <label>📌 Tên thông báo / tên đợt đào tạo</label>
+              <input type="text" data-lb="title" placeholder="VD: Đào tạo hội nhập tuần này — bắt buộc xem">
+            </div>
+            <div class="lbadm-field">
+              <label>👤 Người cần nghe / xem</label>
+              <input type="text" data-lb="targets" placeholder="Để trống nếu gửi cho tất cả">
+            </div>
+            <div class="lbadm-field">
+              <label>🔍 Tìm nhanh trong chuyên đề đang chọn</label>
+              <input type="text" data-lb="search" placeholder="Gõ tên Podcast / Video...">
+            </div>
           </div>
-          <div class="lbadm-field">
-            <label>👤 Tên người cần nghe / xem (có thể để trống nếu gửi cho tất cả)</label>
-            <input type="text" data-lb="targets" placeholder="VD: Huyền, Dũng, các bạn kinh doanh mới">
-          </div>
-          <div class="lbadm-field">
-            <label>🔍 Tìm nhanh tiêu đề</label>
-            <input type="text" data-lb="search" placeholder="Gõ để lọc danh sách bên dưới...">
-          </div>
-          <div class="lbadm-field">
-            <label>✅ Bấm chọn nội dung theo thứ tự muốn phát (số xanh = thứ tự phát)</label>
-            <div class="lbadm-list" data-lb="list"></div>
+          <div class="lbadm-workspace">
+            <section class="lbadm-pane">
+              <div class="lbadm-panehead"><strong>📚 Chuyên đề đào tạo 1–10</strong><small>Bấm vào chuyên đề để lọc đúng nội dung.</small></div>
+              <div class="lbadm-topics" data-lb="topics"></div>
+            </section>
+            <section class="lbadm-pane">
+              <div class="lbadm-panehead"><strong data-lb="libraryTitle">Nội dung chuyên đề</strong><small data-lb="librarySub">Chọn theo thứ tự muốn nhân viên thực hiện.</small></div>
+              <div class="lbadm-librarytools">
+                <button class="lbadm-filterbtn active" data-type="all">Tất cả</button>
+                <button class="lbadm-filterbtn" data-type="audio">🎧 Podcast</button>
+                <button class="lbadm-filterbtn" data-type="video">🎬 Video</button>
+                <button class="lbadm-mini selectall" data-lb="selectAll"><i class="fas fa-check-double"></i> Chọn tất cả đang hiện</button>
+              </div>
+              <div class="lbadm-list" data-lb="list"></div>
+            </section>
+            <section class="lbadm-pane">
+              <div class="lbadm-panehead"><strong>✅ Danh sách sẽ phát Live</strong><small>Có thể chọn nội dung ở nhiều chuyên đề; thứ tự chọn là thứ tự hiển thị.</small></div>
+              <div class="lbadm-queue" data-lb="queue"></div>
+              <div class="lbadm-preview">
+                <div class="lbadm-previewtitle">👁 XEM TRƯỚC THÔNG BÁO</div>
+                <div class="lbadm-previewcard" data-lb="preview"></div>
+              </div>
+            </section>
           </div>
         </div>
         <div class="lbadm-actions">
-          <button class="lbadm-btn go" data-lb="go"><i class="fas fa-broadcast-tower"></i> BẤM THÔNG BÁO LIVE</button>
+          <button class="lbadm-btn go" data-lb="go"><i class="fas fa-broadcast-tower"></i> PHÁT THÔNG BÁO LIVE</button>
           <button class="lbadm-btn reset" data-lb="reset"><i class="fas fa-rotate-left"></i> Chọn lại</button>
           <button class="lbadm-btn stop" data-lb="stop"><i class="fas fa-power-off"></i> Tắt Live</button>
           <span class="lbadm-count" data-lb="count">Đã chọn: 0</span>
@@ -5357,87 +5312,169 @@
       </div>`;
     document.body.appendChild(ov);
     const $ = s => ov.querySelector(`[data-lb="${s}"]`);
+
     ov.querySelector('.lbadm-close').onclick = () => ov.classList.remove('show');
     ov.addEventListener('click', e => { if (e.target === ov) ov.classList.remove('show'); });
+    ov.querySelectorAll('.lbadm-filterbtn').forEach(btn => btn.addEventListener('click', () => {
+      lbType = btn.dataset.type || 'all';
+      ov.querySelectorAll('.lbadm-filterbtn').forEach(x => x.classList.toggle('active', x === btn));
+      renderList();
+    }));
 
-    function openPanel(){ ov.classList.add('show'); renderList(); }
-
-    /* ---- Dữ liệu ---- */
-    db.ref('contents').on('value', s => { lbContents = s.val() || {}; if (ov.classList.contains('show')) renderList(); });
-    db.ref('contentOrder').on('value', s => { lbOrder = s.val() || []; if (ov.classList.contains('show')) renderList(); });
-    db.ref(LB_NODE).on('value', s => {
-      const d = s.val();
-      const st = $('status');
-      if (d && d.active) {
-        st.className = 'lbadm-status on';
-        st.innerHTML = `🔴 ĐANG PHÁT LIVE: <b>${d.title || '(không tên)'}</b> — ${(d.items||[]).length} nội dung` + (d.targets ? ` — gửi: <b>${d.targets}</b>` : '');
-      } else {
-        st.className = 'lbadm-status off';
-        st.textContent = 'Chưa có thông báo Live nào đang phát.';
-      }
-    });
-
+    function esc(v){return String(v==null?'':v).replace(/[&<>'"]/g,ch=>({'&':'&amp;','<':'&lt;','>':'&gt;',"'":'&#39;','"':'&quot;'}[ch]));}
+    function plain(v){return String(v||'').replace(/<[^>]*>/g,' ').replace(/\s+/g,' ').trim();}
+    function norm(v){return plain(v).toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g,'').replace(/đ/g,'d').replace(/[^a-z0-9]+/g,' ').trim();}
+    function contentNum(v){const m=plain(v).match(/(?:^|\b)(?:số\s*)?(\d{1,3})(?=\b|\s*[.\-–—:])/i);return m?parseInt(m[1],10):null;}
     function orderedKeys(){
       const inOrder = lbOrder.filter(k => lbContents[k]);
       const rest = Object.keys(lbContents).filter(k => !inOrder.includes(k));
       return inOrder.concat(rest).filter(k => ['audio','video'].includes(lbContents[k].type));
     }
-
-    function renderList(){
-      const q = ($('search').value || '').toLowerCase();
-      const box = $('list');
-      box.innerHTML = '';
-      orderedKeys().forEach((k, i) => {
-        const c = lbContents[k];
-        if (q && !c.name.toLowerCase().includes(q)) return;
-        const selIdx = lbSelected.indexOf(k);
-        const row = document.createElement('div');
-        row.className = 'lbadm-item' + (selIdx >= 0 ? ' sel' : '');
-        row.innerHTML = `
-          <input type="checkbox" ${selIdx >= 0 ? 'checked' : ''}>
-          <span class="lbadm-num">${i + 1}</span>
-          <span class="lbadm-type ${c.type}">${c.type === 'audio' ? '🎧 Podcast' : '🎬 Video'}</span>
-          <span style="flex:1">${c.name}</span>
-          ${selIdx >= 0 ? `<span class="lbadm-order" title="Thứ tự phát">${selIdx + 1}</span>` : ''}`;
-        row.onclick = e => {
-          if (e.target.tagName !== 'INPUT') e.preventDefault();
-          const p = lbSelected.indexOf(k);
-          if (p >= 0) lbSelected.splice(p, 1); else lbSelected.push(k);
-          renderList();
-        };
-        box.appendChild(row);
-      });
-      $('count').textContent = 'Đã chọn: ' + lbSelected.length;
+    function trainingTopicForContent(c){
+      const name = plain(c && c.name);
+      const n = contentNum(name);
+      if (lbTraining && Array.isArray(lbTraining.stages)) {
+        for (let si=0; si<Math.min(9,lbTraining.stages.length); si++) {
+          const items = Array.isArray(lbTraining.stages[si].items) ? lbTraining.stages[si].items : [];
+          for (const item of items) {
+            const inum = contentNum(item && item.title);
+            if (n != null && inum != null && n === inum) return si + 1;
+            const a = norm(name), b = norm(item && item.title);
+            if (a && b && (a === b || a.includes(b) || b.includes(a))) return si + 1;
+          }
+        }
+      }
+      const text = norm(name);
+      let best = {topic:10,score:0};
+      LB_TOPICS.slice(0,9).forEach(t => (t.keywords||[]).forEach(k => {
+        const nk=norm(k); if(nk && text.includes(nk) && nk.length>best.score) best={topic:t.n,score:nk.length};
+      }));
+      return best.topic;
     }
-    $('search').addEventListener('input', renderList);
-
-    /* ---- Hành động ---- */
-    $('reset').onclick = () => { lbSelected = []; $('title').value = ''; $('targets').value = ''; renderList(); };
-
-    $('go').onclick = () => {
-      if (!lbSelected.length) { alert('Vui lòng bấm chọn ít nhất 1 nội dung để thông báo Live!'); return; }
-      const title = $('title').value.trim() || 'Thông báo đào tạo mới';
-      const targets = $('targets').value.trim();
-      const items = lbSelected.map(k => {
-        const c = lbContents[k];
-        return { key: k, name: c.name, type: c.type, link: c.link, image: c.image || '' };
+    function topicOfKey(k){return trainingTopicForContent(lbContents[k]||{});}
+    function topicInfo(n){return LB_TOPICS.find(t=>t.n===n)||LB_TOPICS[9];}
+    function visibleKeys(){
+      const q = norm($('search').value || '');
+      return orderedKeys().filter(k => {
+        const c=lbContents[k];
+        if(topicOfKey(k)!==lbTopic) return false;
+        if(lbType!=='all' && c.type!==lbType) return false;
+        if(q && !norm(c.name).includes(q)) return false;
+        return true;
       });
-      db.ref(LB_NODE).set({
-        active: true, title, targets, items,
-        createdAt: Date.now()
-      }).then(() => {
-        alert(`🔴 Đã phát THÔNG BÁO LIVE!\n\nTên: ${title}\nSố nội dung: ${items.length}` + (targets ? `\nGửi tới: ${targets}` : ''));
-        ov.classList.remove('show');
-      }).catch(e => alert('Lỗi phát Live: ' + e.message));
-    };
+    }
+    function openPanel(){
+      ov.classList.add('show');
+      renderAll();
+      setTimeout(()=>$('search').focus(),80);
+    }
 
-    $('stop').onclick = () => {
-      if (!confirm('Tắt thông báo Live đang phát trên tất cả website?')) return;
-      db.ref(LB_NODE + '/active').set(false).then(() => alert('Đã tắt thông báo Live.'));
+    db.ref('contents').on('value', s => {lbContents=s.val()||{}; if(ov.classList.contains('show'))renderAll();});
+    db.ref('contentOrder').on('value', s => {lbOrder=s.val()||[]; if(ov.classList.contains('show'))renderAll();});
+    db.ref('settings/trainingList').on('value', s => {lbTraining=s.val()||null; if(ov.classList.contains('show'))renderAll();});
+    db.ref(LB_NODE).on('value', s => {
+      const d=s.val(), st=$('status');
+      if(d&&d.active){
+        st.className='lbadm-status on';
+        const topicTxt=Array.isArray(d.topics)&&d.topics.length?` — Chuyên đề: <b>${d.topics.map(x=>x.number).join(', ')}</b>`:'';
+        st.innerHTML=`🔴 ĐANG PHÁT LIVE: <b>${esc(d.title||'(không tên)')}</b> — ${(d.items||[]).length} nội dung${topicTxt}`+(d.targets?` — gửi: <b>${esc(d.targets)}</b>`:'');
+      }else{st.className='lbadm-status off';st.textContent='Chưa có thông báo Live nào đang phát.';}
+    });
+
+    function renderTopics(){
+      const counts={}; LB_TOPICS.forEach(t=>counts[t.n]=0);
+      orderedKeys().forEach(k=>counts[topicOfKey(k)]=(counts[topicOfKey(k)]||0)+1);
+      $('topics').innerHTML=LB_TOPICS.map(t=>`
+        <button class="lbadm-topic ${lbTopic===t.n?'active':''}" data-topic="${t.n}" title="${esc(t.name)}">
+          <span class="lbadm-topicnum">${String(t.n).padStart(2,'0')}</span>
+          <span class="lbadm-topicname">${esc(t.name)}</span>
+          <span class="lbadm-topiccount">${counts[t.n]||0}</span>
+        </button>`).join('');
+      $('topics').querySelectorAll('.lbadm-topic').forEach(btn=>btn.onclick=()=>{
+        lbTopic=parseInt(btn.dataset.topic,10)||1;
+        const t=topicInfo(lbTopic);
+        if(!$('title').value.trim()) $('title').value=`Chuyên đề ${String(t.n).padStart(2,'0')} — ${t.name}`;
+        renderAll();
+      });
+    }
+    function renderList(){
+      const t=topicInfo(lbTopic), keys=visibleKeys(), box=$('list');
+      $('libraryTitle').textContent=`Chuyên đề ${String(t.n).padStart(2,'0')} — ${t.name}`;
+      $('librarySub').textContent=`${keys.length} nội dung phù hợp bộ lọc hiện tại. Bấm từng dòng để chọn.`;
+      if(!keys.length){box.innerHTML='<div class="lbadm-empty">Không có Podcast/Video phù hợp trong chuyên đề này.<br><small>Có thể thử xóa ô tìm kiếm hoặc chọn loại “Tất cả”.</small></div>';renderQueue();return;}
+      box.innerHTML=keys.map((k,i)=>{
+        const c=lbContents[k], selIdx=lbSelected.indexOf(k), num=contentNum(c.name);
+        return `<div class="lbadm-item ${selIdx>=0?'sel':''}" data-key="${esc(k)}">
+          <input type="checkbox" ${selIdx>=0?'checked':''} tabindex="-1">
+          <span class="lbadm-num">${num!=null?num:(i+1)}</span>
+          <span class="lbadm-type ${c.type}">${c.type==='audio'?'🎧 Podcast':'🎬 Video'}</span>
+          <span class="lbadm-itemname" title="${esc(plain(c.name))}">${esc(plain(c.name))}</span>
+          ${selIdx>=0?`<span class="lbadm-order" title="Thứ tự phát">${selIdx+1}</span>`:'<span></span>'}
+        </div>`;
+      }).join('');
+      box.querySelectorAll('.lbadm-item').forEach(row=>row.onclick=()=>toggleKey(row.dataset.key));
+      renderQueue();
+    }
+    function renderQueue(){
+      const box=$('queue');
+      if(!lbSelected.length){box.innerHTML='<div class="lbadm-empty">Chưa chọn nội dung nào.<br><small>Chọn Podcast/Video ở cột giữa.</small></div>';}
+      else box.innerHTML=lbSelected.map((k,i)=>{
+        const c=lbContents[k]||{}, t=topicInfo(topicOfKey(k));
+        return `<div class="lbadm-qitem">
+          <span class="lbadm-qnum">${i+1}</span>
+          <span class="lbadm-qtext"><strong title="${esc(plain(c.name))}">${esc(plain(c.name)||'Nội dung đã xóa')}</strong><small>Chuyên đề ${t.n} · ${c.type==='video'?'Video':'Podcast'}</small></span>
+          <button class="lbadm-qremove" data-rm="${esc(k)}" title="Bỏ khỏi danh sách">×</button>
+        </div>`;
+      }).join('');
+      box.querySelectorAll('[data-rm]').forEach(btn=>btn.onclick=e=>{e.stopPropagation();toggleKey(btn.dataset.rm);});
+      $('count').textContent='Đã chọn: '+lbSelected.length+' nội dung';
+      renderPreview();
+    }
+    function renderPreview(){
+      const title=$('title').value.trim()||'Thông báo đào tạo mới';
+      const targets=$('targets').value.trim();
+      const topics=[...new Set(lbSelected.map(topicOfKey))].sort((a,b)=>a-b);
+      $('preview').innerHTML=`🔴 <b>${esc(title)}</b><br>${topics.length?`Chuyên đề: <b>${topics.join(', ')}</b> · `:''}${lbSelected.length} nội dung cần nghe/xem${targets?`<br>Người nhận: <b>${esc(targets)}</b>`:'<br>Người nhận: <b>Tất cả</b>'}`;
+    }
+    function renderAll(){renderTopics();renderList();}
+    function toggleKey(k){
+      const p=lbSelected.indexOf(k); if(p>=0)lbSelected.splice(p,1);else if(lbContents[k])lbSelected.push(k); renderList();
+    }
+
+    $('search').addEventListener('input',renderList);
+    $('title').addEventListener('input',renderPreview);
+    $('targets').addEventListener('input',renderPreview);
+    $('selectAll').onclick=()=>{
+      const keys=visibleKeys();
+      const missing=keys.filter(k=>!lbSelected.includes(k));
+      if(missing.length) lbSelected.push(...missing); else lbSelected=lbSelected.filter(k=>!keys.includes(k));
+      renderList();
+    };
+    $('reset').onclick=()=>{lbSelected=[];lbTopic=1;lbType='all';$('title').value='';$('targets').value='';$('search').value='';ov.querySelectorAll('.lbadm-filterbtn').forEach(x=>x.classList.toggle('active',x.dataset.type==='all'));renderAll();};
+
+    $('go').onclick=()=>{
+      if(!lbSelected.length){alert('Vui lòng chọn ít nhất 1 Podcast/Video để phát thông báo Live!');return;}
+      const title=$('title').value.trim()||'Thông báo đào tạo mới';
+      const targets=$('targets').value.trim();
+      const items=lbSelected.map(k=>{
+        const c=lbContents[k], tn=topicOfKey(k), t=topicInfo(tn);
+        return {key:k,name:c.name,type:c.type,link:c.link,image:c.image||'',topicNumber:tn,topicName:t.name};
+      });
+      const topicNumbers=[...new Set(items.map(x=>x.topicNumber))].sort((a,b)=>a-b);
+      const topics=topicNumbers.map(n=>({number:n,name:topicInfo(n).name}));
+      db.ref(LB_NODE).set({active:true,title,targets,items,topics,primaryTopic:(items[0]?.topicNumber||lbTopic),createdAt:Date.now()}).then(()=>{
+        alert(`🔴 Đã phát THÔNG BÁO LIVE!\n\nTên: ${title}\nChuyên đề: ${topicNumbers.join(', ')}\nSố nội dung: ${items.length}`+(targets?`\nGửi tới: ${targets}`:'\nGửi tới: Tất cả'));
+        ov.classList.remove('show');
+      }).catch(e=>alert('Lỗi phát Live: '+e.message));
+    };
+    $('stop').onclick=()=>{
+      if(!confirm('Tắt thông báo Live đang phát trên tất cả website?'))return;
+      db.ref(LB_NODE+'/active').set(false).then(()=>alert('Đã tắt thông báo Live.'));
     };
   })();
   </script>
   <!-- ═══════════════ HẾT MODULE THÔNG BÁO LIVE ═══════════════ -->
+
 
   <!-- ═══════════════ MODULE KHÓA MẬT KHẨU VÀO ỨNG DỤNG ═══════════════ -->
   <script>
